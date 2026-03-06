@@ -21,24 +21,20 @@
             </div>
         </nav>
 
-        <div class="grid grid-cols-2 mb-4">
-            <div class="glass-card stat-card">
-                <div class="stat-label">Total Balance</div>
-                <div class="stat-value text-gradient">₦<span id="balance-display">0</span></div>
-                <p class="text-secondary">Earn ₦200 for every 5 ads viewed!</p>
-            </div>
-
-            <div class="glass-card stat-card">
-                <div class="stat-label">Ads Viewed</div>
-                <div class="stat-value text-gradient" id="ads-viewed-display">0</div>
-                <p class="text-secondary">Keep going to earn more!</p>
-            </div>
-        </div>
-
         <div class="glass-card mb-4 text-center">
-            <h2 class="mb-2">Start Earning</h2>
-            <p class="text-secondary mb-4">View short ads and get paid directly to your dashboard.</p>
-            <a href="/view-ads.html" class="btn btn-primary" style="max-width: 300px;">View Ads Now</a>
+            <h2 class="mb-2" style="font-size: 1.5rem; color: var(--text-primary);">Total Balance</h2>
+            <div class="stat-value text-gradient" style="font-size: 3rem;">₦<span id="balance-display">0</span></div>
+            <p class="text-secondary mb-4">You have <strong id="ads-viewed-display"
+                    style="color: var(--primary-color);">0</strong> ads viewed.</p>
+
+            <a href="/view-ads.html" class="btn btn-primary" style="max-width: 300px; margin-bottom: 2rem;">Watch Ads to
+                Earn More</a>
+
+            <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #334155;">Withdrawal Status</h3>
+                <p id="withdrawal-timer" style="color: var(--secondary-color); font-weight: 500;">Loading withdrawal
+                    status...</p>
+            </div>
         </div>
 
         <div class="glass-card text-center">

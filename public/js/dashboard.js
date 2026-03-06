@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const { data, error } = await supabaseClient
             .from('users')
-            .select('username, balance, total_ads_viewed, referral_code')
+            .select('username, balance, total_ads_viewed, referral_code, created_at')
             .eq('id', userId)
             .single();
 
@@ -36,6 +36,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const refLink = `${window.location.origin}/?ref=${data.referral_code}`;
             document.getElementById('referral-link').value = refLink;
+
+            // Withdrawal Timer Logic
+            const createdAt = new Date(data.created_at);
+            const withdrawalDate = new Date(createdAt.getTime() + (20 * 24 * 60 * 60 * 1000));
+            const now = new Date();
+            const timeDiff = withdrawalDate.getTime() - now.getTime();
+
+            const timerElement = document.getElementById('withdrawal-timer');
+
+            if (timeDiff <= 0) {
+                // Time has passed
+                timerElement.innerHTML = `<span style="color: var(--primary-color);">Unlocked! You can now request a withdrawal.</span>`;
+            } else {
+                // Calculate days remaining
+                const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                timerElement.innerText = `Available in ${daysRemaining} day${daysRemaining !== 1 ? 's' : ''}`;
+            }
         }
 
     } catch (err) {
