@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Ads | AdRewards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/supabase-config.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo text-gradient">AdRewards</div>
+            <div class="nav-links">
+                <a href="/dashboard.html">← Back to Dashboard</a>
+            </div>
+        </nav>
+
+        <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 3rem;">
+            <h2 class="text-center mb-2">Viewing Advertisement</h2>
+            <p class="text-center text-secondary mb-4">Please wait for the timer to complete to earn your reward.</p>
+
+            <div class="timer-text text-gradient" id="timer-display">10</div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div class="ad-container" id="ad-frame">
+                <!-- Adsterra Code will go here. Mocking for now -->
+                <div style="text-align: center; color: #888;">
+                    <h3>Sponsored Content</h3>
+                    <p>MOCK ADSTERRA AD PLACEMENT</p>
+                    <p style="font-size: 0.8rem; margin-top: 1rem;">(In production, replace this block with the real
+                        Adsterra script snippet)</p>
+                </div>
+            </div>
+
+            <div id="action-area" class="text-center hidden">
+                <h3 class="success-text mb-2">Ad viewed successfully!</h3>
+                <p id="reward-message" class="mb-4 text-secondary"></p>
+                <div class="grid grid-cols-2">
+                    <button id="next-ad-btn" class="btn btn-primary">View Next Ad</button>
+                    <a href="/dashboard.html" class="btn btn-outline">Go to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/ads.js"></script>
+</body>
+
+</html>

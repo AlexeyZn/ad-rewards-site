@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | AdRewards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/supabase-config.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo text-gradient">AdRewards</div>
+            <div class="nav-links">
+                <span id="user-greeting" class="text-secondary"></span>
+                <a href="#" id="logout-btn">Logout</a>
+            </div>
+        </nav>
+
+        <div class="grid grid-cols-2 mb-4">
+            <div class="glass-card stat-card">
+                <div class="stat-label">Total Balance</div>
+                <div class="stat-value text-gradient">₦<span id="balance-display">0</span></div>
+                <p class="text-secondary">Earn ₦200 for every 5 ads viewed!</p>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-label">Ads Viewed</div>
+                <div class="stat-value text-gradient" id="ads-viewed-display">0</div>
+                <p class="text-secondary">Keep going to earn more!</p>
+            </div>
+        </div>
+
+        <div class="glass-card mb-4 text-center">
+            <h2 class="mb-2">Start Earning</h2>
+            <p class="text-secondary mb-4">View short ads and get paid directly to your dashboard.</p>
+            <a href="/view-ads.html" class="btn btn-primary" style="max-width: 300px;">View Ads Now</a>
+        </div>
+
+        <div class="glass-card text-center">
+            <h2 class="mb-2">Referrals</h2>
+            <p class="text-secondary mb-2">Share your referral link with friends and earn ₦50 when they watch their
+                first 5 ads.</p>
+
+            <div class="form-group" style="max-width: 500px; margin: 0 auto;">
+                <input type="text" id="referral-link" class="form-control text-center" readonly value="Loading...">
+                <button id="copy-ref-btn" class="btn btn-outline mt-2">Copy Link</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+
+</html>
