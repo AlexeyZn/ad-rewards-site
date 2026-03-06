@@ -1,15 +1,15 @@
 :root {
-    --bg-color: #f8fafc;
+    --bg-color: #ffffff;
     --card-bg: #ffffff;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
+    --text-primary: #000000;
+    --text-secondary: #4b5563;
     --primary-color: #10b981;
     --primary-hover: #059669;
-    --accent-color: #3b82f6;
-    --accent-hover: #2563eb;
+    --accent-color: #111827;
+    --accent-hover: #000000;
     --danger-color: #ef4444;
-    --glow-spread: rgba(16, 185, 129, 0.3);
-    --border-color: rgba(0, 0, 0, 0.05);
+    --glow-spread: rgba(16, 185, 129, 0.2);
+    --border-color: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -39,15 +39,15 @@ body {
 .glass-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .glass-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 /* Typography */
@@ -102,32 +102,31 @@ h3 {
 .form-control {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: #f1f5f9;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
     color: var(--text-primary);
     font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-control:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 600;
     font-size: 1rem;
     text-align: center;
     cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
     text-decoration: none;
     width: 100%;
 }
@@ -152,12 +151,13 @@ h3 {
 
 .btn-outline {
     background-color: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
 }
 
 .btn-outline:hover {
-    background-color: rgba(16, 185, 129, 0.05);
+    background-color: var(--text-primary);
+    color: var(--bg-color);
 }
 
 /* Grid Layouts */
