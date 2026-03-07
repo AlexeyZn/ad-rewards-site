@@ -15,13 +15,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     const rewardMessage = document.getElementById('reward-message');
     const adFrame = document.getElementById('ad-frame');
 
-    // Simulate initial loading delay
-    setTimeout(() => {
-        startTimer();
-    }, 1000);
+    let timerInterval;
+    let timerStarted = false;
+
+    function initTimer() {
+        if (!timerStarted) {
+            timerStarted = true;
+            timerDisplay.innerText = timeLeft;
+            startTimer();
+        }
+    }
+
+    // Wait for the ad to load before starting the timer
+    adFrame.addEventListener('load', initTimer);
+
+    // Fallback just in case the iframe ad is already loaded or taking too long
+    setTimeout(initTimer, 3000);
 
     function startTimer() {
-        const interval = setInterval(() => {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
             timeLeft--;
             timerDisplay.innerText = Math.max(0, timeLeft);
 
@@ -30,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             progressFill.style.width = `${pct}%`;
 
             if (timeLeft <= 0) {
-                clearInterval(interval);
+                clearInterval(timerInterval);
                 completeAdView();
             }
         }, 1000);
@@ -110,21 +123,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Next ad button logic
     document.getElementById('next-ad-btn').addEventListener('click', () => {
-        // Reset state and run again
+        // Reset state and wait for ad to load before starting timer
         timeLeft = 10;
-        timerDisplay.innerText = timeLeft;
+        timerDisplay.innerText = '...';
         progressFill.style.width = '0%';
         actionArea.classList.add('hidden');
         adFrame.style.opacity = '1';
         rewardMessage.innerText = '';
         rewardMessage.className = 'mb-4 text-secondary';
 
+        timerStarted = false;
+
         const adIframe = document.getElementById('ad-frame');
         if (adIframe) {
             adIframe.src = '/ad-unit.html?t=' + new Date().getTime(); // cache bust to force reload
         }
 
-        startTimer();
+        // Timeout fallback for next ad
+        setTimeout(initTimer, 3000);
     });
 
     // Listen for auth state changes
