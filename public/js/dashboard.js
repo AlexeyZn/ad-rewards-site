@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const { data, error } = await supabaseClient
             .from('users')
-            .select('username, balance, total_ads_viewed, referral_code, created_at')
+            .select('username, balance, total_ads_viewed, referral_code')
             .eq('id', userId)
             .single();
 
@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('referral-link').value = refLink;
 
             // Withdrawal Timer Logic
-            const createdAt = new Date(data.created_at);
+            // The public.users table does not contain created_at, so we use the session user's created_at.
+            const createdAt = new Date(session.user.created_at);
             const withdrawalDate = new Date(createdAt.getTime() + (20 * 24 * 60 * 60 * 1000));
             const now = new Date();
             const timeDiff = withdrawalDate.getTime() - now.getTime();

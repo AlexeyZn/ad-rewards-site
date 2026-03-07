@@ -13,10 +13,13 @@
 
 <body>
     <div class="auth-wrapper">
-        <div class="glass-card auth-card">
-            <h1 class="text-center" id="auth-title" style="color: var(--text-primary); margin-bottom: 0.5rem;">Welcome
-                Back</h1>
-            <p class="text-center text-secondary mb-4" id="auth-subtitle">Login to continue earning</p>
+        <div class="auth-box">
+            <div class="text-center mb-4">
+                <div class="logo text-gradient" style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">
+                    AdRewards</div>
+                <h1 id="auth-title" style="font-size: 1.25rem;">Welcome Back</h1>
+                <p class="text-secondary" id="auth-subtitle" style="font-size: 0.9rem;">Login to continue earning</p>
+            </div>
 
             <!-- Login Form -->
             <div id="login-form-container">
@@ -31,13 +34,13 @@
                         <input type="password" id="login-password" class="form-control"
                             placeholder="Enter your password" required>
                     </div>
-                    <div id="login-error" class="error-text mb-2 text-center"></div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <div id="login-error" class="error-text text-center"></div>
+                    <button type="submit" class="btn btn-primary mt-2">Login</button>
 
-                    <p class="text-center mt-4">
+                    <p class="text-center mt-4" style="font-size: 0.9rem;">
                         <span class="text-secondary">Don't have an account?</span>
-                        <a href="#" id="show-register" style="color: var(--primary-color); text-decoration: none;">Sign
-                            up</a>
+                        <a href="#" id="show-register"
+                            style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Sign up</a>
                     </p>
                 </form>
             </div>
@@ -64,19 +67,18 @@
                         <label for="reg-referred">Referral Code (Optional)</label>
                         <input type="text" id="reg-referred" class="form-control" placeholder="Enter referral code">
                     </div>
-                    <div id="reg-error" class="error-text mb-2 text-center"></div>
-                    <button type="submit" class="btn btn-primary">Create Account</button>
+                    <div id="reg-error" class="error-text text-center"></div>
+                    <button type="submit" class="btn btn-primary mt-2">Create Account</button>
 
-                    <p class="text-center mt-4">
+                    <p class="text-center mt-4" style="font-size: 0.9rem;">
                         <span class="text-secondary">Already have an account?</span>
                         <a href="#" id="show-login"
-                            style="color: var(--primary-color); text-decoration: none;">Login</a>
+                            style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Login</a>
                     </p>
                 </form>
             </div>
         </div>
     </div>
-
     <script src="/js/auth.js"></script>
 </body>
 

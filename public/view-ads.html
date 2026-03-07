@@ -13,48 +13,45 @@
 
 <body>
     <div class="container">
-        <nav>
-            <div class="logo text-gradient">AdRewards</div>
-            <div class="nav-links">
-                <a href="/dashboard.html">← Back to Dashboard</a>
-            </div>
-        </nav>
-
-        <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 3rem;">
-            <h2 class="text-center mb-2">Viewing Advertisement</h2>
-            <p class="text-center text-secondary mb-4">Please wait for the timer to complete to earn your reward.</p>
-
-            <div class="timer-text text-gradient" id="timer-display" style="font-size: 3rem;">10</div>
-
-            <div class="progress-bar" style="max-width: 400px; margin: 0 auto 2rem auto; background: #ffffff;">
-                <div class="progress-fill" id="progress-fill" style="background: #4CAF50;"></div>
+        <div class="app-view">
+            <!-- Top Nav -->
+            <div class="top-nav">
+                <div class="logo text-gradient">AdRewards</div>
+                <div class="nav-actions">
+                    <a href="/dashboard.html">← Back to Dashboard</a>
+                </div>
             </div>
 
-            <div class="ad-container" id="ad-frame"
-                style="background: transparent; height: auto; min-height: 250px; padding: 1rem; margin-bottom: 2rem;">
-                <script>
-                    atOptions = {
-                        'key': 'ac05469257eba1e558808e7b3e40828b',
-                        'format': 'iframe',
-                        'height': 250,
-                        'width': 300,
-                        'params': {}
-                    };
-                </script>
-                <script src="https://www.highperformanceformat.com/ac05469257eba1e558808e7b3e40828b/invoke.js"></script>
+            <div class="text-center">
+                <h2 class="mb-1" style="font-size: 1.5rem;">Viewing Advertisement</h2>
+                <p class="text-secondary mb-4" style="font-size: 0.95rem;">Please wait for the timer to complete to earn
+                    ₦40.</p>
             </div>
 
-            <div id="action-area" class="text-center hidden">
-                <h3 class="success-text mb-2">Ad viewed successfully!</h3>
-                <p id="reward-message" class="mb-4 text-secondary"></p>
+            <div class="timer-text text-gradient" id="timer-display">10</div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div class="ad-container">
+                <iframe id="ad-frame" src="/ad-unit.html" frameborder="0" width="300" height="250" scrolling="no"
+                    style="background: transparent;"></iframe>
+            </div>
+
+            <div id="action-area" class="text-center hidden" style="margin-top: 1rem;">
+                <h3 class="success-text mb-1" style="font-size: 1.1rem; color: var(--primary-color);">Ad viewed
+                    successfully!</h3>
+                <p id="reward-message" class="mb-4 text-secondary" style="font-size: 0.95rem;"></p>
                 <div class="grid grid-cols-2">
                     <button id="next-ad-btn" class="btn btn-primary">View Next Ad</button>
-                    <a href="/dashboard.html" class="btn btn-outline">Go to Dashboard</a>
+                    <a href="/dashboard.html" class="btn btn-outline"
+                        style="line-height: normal; display: flex; align-items: center; justify-content: center;">Go to
+                        Dashboard</a>
                 </div>
             </div>
         </div>
     </div>
-
     <script src="/js/ads.js"></script>
 </body>
 

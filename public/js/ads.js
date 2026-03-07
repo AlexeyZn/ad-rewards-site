@@ -56,26 +56,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             const newTotalAds = (user.total_ads_viewed || 0) + 1;
             let balanceIncrease = 0;
 
-            // Every 5 ads = 200 Naira
-            if (newTotalAds > 0 && newTotalAds % 5 === 0) {
-                balanceIncrease = 200;
+            // Reward 40 Naira per ad immediately
+            balanceIncrease = 40;
 
-                // Referral Reward: 50 Naira to the referrer
-                if (user.referred_by) {
-                    // Fetch referrer's current balance
-                    const { data: referrer, error: refFetchErr } = await supabaseClient
+            // Referral Reward: 50 Naira to the referrer, maybe checking if it's their first ad (we'll check if total_ads > 0 but we aren't keeping strict referral counts right now; keeping the logic simple: trigger reward for 1st ad for referrer to avoid double pay ideally, or keep the old % 5 logic just for referrals).
+            // Let's reward referrer on the 1st ad watched.
+            if (newTotalAds === 1 && user.referred_by) {
+                // Fetch referrer's current balance
+                const { data: referrer, error: refFetchErr } = await supabaseClient
+                    .from('users')
+                    .select('id, balance')
+                    .eq('referral_code', user.referred_by)
+                    .single();
+
+                if (referrer && !refFetchErr) {
+                    // Update referrer balance
+                    await supabaseClient
                         .from('users')
-                        .select('id, balance')
-                        .eq('referral_code', user.referred_by)
-                        .single();
-
-                    if (referrer && !refFetchErr) {
-                        // Update referrer balance
-                        await supabaseClient
-                            .from('users')
-                            .update({ balance: (referrer.balance || 0) + 50 })
-                            .eq('id', referrer.id);
-                    }
+                        .update({ balance: (referrer.balance || 0) + 50 })
+                        .eq('id', referrer.id);
                 }
             }
 
@@ -120,13 +119,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         rewardMessage.innerText = '';
         rewardMessage.className = 'mb-4 text-secondary';
 
-        // In a real scenario with Adsterra, we would refresh the iframe/ad unit here.
-        // For mock:
-        adFrame.innerHTML = `<div style="text-align: center; color: #888;">
-            <h3>Sponsored Content (Reloaded)</h3>
-            <p>MOCK ADSTERRA AD PLACEMENT ${Math.floor(Math.random() * 100)}</p>
-            <p style="font-size: 0.8rem; margin-top: 1rem;">(In production, replace this block with the real Adsterra script snippet)</p>
-        </div>`;
+        const adIframe = document.getElementById('ad-frame');
+        if (adIframe) {
+            adIframe.src = '/ad-unit.html?t=' + new Date().getTime(); // cache bust to force reload
+        }
 
         startTimer();
     });

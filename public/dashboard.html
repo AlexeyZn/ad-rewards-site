@@ -13,42 +13,51 @@
 
 <body>
     <div class="container">
-        <nav>
-            <div class="logo text-gradient">AdRewards</div>
-            <div class="nav-links">
-                <span id="user-greeting" class="text-secondary"></span>
-                <a href="#" id="logout-btn">Logout</a>
+        <div class="app-view">
+            <!-- Top Nav inside the app view -->
+            <div class="top-nav">
+                <div class="logo text-gradient">AdRewards</div>
+                <div class="nav-actions">
+                    <span id="user-greeting" class="text-secondary" style="margin-right: 1rem;"></span>
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
             </div>
-        </nav>
 
-        <div class="glass-card mb-4 text-center">
-            <h2 class="mb-2" style="font-size: 1.5rem; color: var(--text-primary);">Total Balance</h2>
-            <div class="stat-value text-gradient" style="font-size: 3rem;">₦<span id="balance-display">0</span></div>
-            <p class="text-secondary mb-4">You have <strong id="ads-viewed-display"
-                    style="color: var(--primary-color);">0</strong> ads viewed.</p>
+            <!-- Balance Section -->
+            <div class="val-display">
+                <h2 style="font-size: 1.1rem; color: var(--text-secondary); font-weight: 500;">Total Balance</h2>
+                <div class="stat-value text-gradient">₦<span id="balance-display">0</span></div>
+                <p class="text-secondary">Ads Viewed: <strong id="ads-viewed-display"
+                        style="color: var(--primary-color);">0</strong></p>
 
-            <a href="/view-ads.html" class="btn btn-primary" style="max-width: 300px; margin-bottom: 2rem;">Watch Ads to
-                Earn More</a>
+                <div style="margin-top: 1.5rem;">
+                    <a href="/view-ads.html" class="btn btn-primary" style="max-width: 250px;">Watch Ads to Earn</a>
+                </div>
+            </div>
 
-            <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #334155;">Withdrawal Status</h3>
-                <p id="withdrawal-timer" style="color: var(--secondary-color); font-weight: 500;">Loading withdrawal
+            <!-- Withdrawal Section -->
+            <div class="status-box">
+                <h3 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Withdrawal Status</h3>
+                <p id="withdrawal-timer" style="color: var(--text-secondary); font-size: 0.95rem;">Loading withdrawal
                     status...</p>
             </div>
-        </div>
 
-        <div class="glass-card text-center">
-            <h2 class="mb-2">Referrals</h2>
-            <p class="text-secondary mb-2">Share your referral link with friends and earn ₦50 when they watch their
-                first 5 ads.</p>
+            <!-- Referrals Section merged neatly -->
+            <div class="val-display" style="padding-bottom: 0;">
+                <h2 style="font-size: 1.25rem;">Referrals</h2>
+                <p class="text-secondary mb-2" style="font-size: 0.9rem;">Earn ₦50 when friends watch their first 5 ads.
+                </p>
 
-            <div class="form-group" style="max-width: 500px; margin: 0 auto;">
-                <input type="text" id="referral-link" class="form-control text-center" readonly value="Loading...">
-                <button id="copy-ref-btn" class="btn btn-outline mt-2">Copy Link</button>
+                <div class="form-group" style="display: flex; gap: 0.5rem; max-width: 100%;">
+                    <input type="text" id="referral-link" class="form-control" readonly value="Loading..."
+                        style="flex: 1;">
+                    <button id="copy-ref-btn" class="btn btn-outline"
+                        style="width: auto; padding: 0.85rem 1rem;">Copy</button>
+                </div>
             </div>
+
         </div>
     </div>
-
     <script src="/js/dashboard.js"></script>
 </body>
 
